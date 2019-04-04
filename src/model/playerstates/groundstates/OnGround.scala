@@ -25,11 +25,12 @@ abstract class OnGround(player: Player) extends PlayerState(player) {
     player.walkDown()
     player.state = new Walking(player)
 
-  /*
+    /*
   override def noPlatformCollision(): Unit = {
     if(this.timeInState > 0.2) {
       player.state = new Falling(player)
     }
   }
   */
+  }
 }

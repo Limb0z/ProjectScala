@@ -2,7 +2,7 @@ package controls
 
 import javafx.event.EventHandler
 import javafx.scene.input.KeyEvent
-import states.Player
+import model.Player
 
 abstract class keyboard (player: Player) extends EventHandler [KeyEvent] {
 

@@ -4,6 +4,7 @@ import gameFunctions._
 import gameObjects.World
 import org.scalatest.FunSuite
 import scala.collection.mutable.ListBuffer
+import model.Player
 
 class TestPickUpItem extends FunSuite {
 

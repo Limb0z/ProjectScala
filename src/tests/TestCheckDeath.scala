@@ -4,6 +4,7 @@ import gameFunctions.functions
 import gameObjects._
 import org.scalatest.FunSuite
 import scala.collection.mutable.ListBuffer
+import model.Player
 
 class TestCheckDeath extends FunSuite {
 
