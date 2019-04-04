@@ -11,6 +11,8 @@ class Player(var backpack: Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "
              var locationY:Double)
   extends living(health = 100.0) {
 
+  var state:playerState = new standing
+
   def useBandage(player: Player): Unit = {
     player.health += 10.0
     if (player.health > 100.0){
