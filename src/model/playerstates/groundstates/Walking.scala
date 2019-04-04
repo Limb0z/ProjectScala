@@ -12,10 +12,16 @@ class Walking(player: Player) extends OnGround(player) {
     player.walkRight()
   }
 
-  override def jumpPressed(): Unit = {
-    player.velocity.z = player.walkingJumpVelocity
-    player.state = new Rising(player)
+  override def upPressed(): Unit = {
+    player.walkUp()
+    //player.state = new Rising(player)
   }
+
+  override def downPressed(): Unit = {
+    player.walkDown()
+    //player.state = new Rising(player)
+  }
+
 
   override def leftReleased(): Unit = {
     super.leftReleased()

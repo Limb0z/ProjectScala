@@ -1,12 +1,11 @@
 package model
 
 import model.playerstates.PlayerState
-import model.playerstates.groundstates.Standing
+import model.playerstates.groundstates.Walking
 import gameObjects._
 
 class Player(var backpack: Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "ammo" -> 0),
              var hunger:Double,
-             var state:String,
              var locationX:Double,
              var locationY:Double)
   extends living(health = 100.0) {
@@ -37,7 +36,7 @@ class Player(var backpack: Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "
     }
   }
 
-  var state:PlayerState = new Standing(this)
+  var state:PlayerState = new Walking(this)
 
   var leftKeyHeld = false
   var rightKeyHeld = false
