@@ -33,4 +33,14 @@ class Walking(player: Player) extends OnGround(player) {
     player.state = new Standing(player)
   }
 
+  override def upReleased(): Unit = {
+    super.upReleased()
+    player.state = new Standing(player)
+  }
+
+  override def downReleased(): Unit = {
+    super.downReleased()
+    player.state = new Standing(player)
+  }
+
 }

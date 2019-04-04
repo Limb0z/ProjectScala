@@ -26,13 +26,15 @@ abstract class PlayerState(player: Player) {
 
   def upPressed(): Unit = {}
 
+  def downPressed(): Unit = {}
+
   def leftReleased(): Unit = {}
 
   def rightReleased(): Unit = {}
 
   def upReleased(): Unit = {}
 
-  def downRelease(): Unit = {}
+  def downReleased(): Unit = {}
 
   /*
   def isAlive: Boolean = {
