@@ -1,7 +1,7 @@
 package tests
 
 import gameFunctions._
-import gameObjects.{Player, World}
+import gameObjects.World
 import org.scalatest.FunSuite
 import scala.collection.mutable.ListBuffer
 

@@ -1,7 +1,5 @@
 package states.state
 
-import gameObjects.Player
-
 abstract class playerState (player:Player){
 
   def leftPressed(): Unit = {}
