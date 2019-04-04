@@ -38,7 +38,7 @@ object gui extends JFXApp{
   }
 
   this.stage = new PrimaryStage {
-    this.title = "2D Graphics"
+    this.title = "MMO GAME"
     scene = new Scene(windowWidth, windowHeight) {
       content = List(sceneGraphics)
       addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))
