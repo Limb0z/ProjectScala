@@ -10,14 +10,15 @@ class Player(var hunger:Double,
              var locationY:Double)
   extends living(health = 100.0) {
 
-  var backpack:Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "ammo" -> 0)
+  //var backpack:Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "ammo" -> 0)
+  var backpack = scala.collection.mutable.Map("bandage" -> 0, "food" -> 0 ,"ammo" -> 0)
 
   def useBandage(player: Player): Unit = {
     player.health += 10.0
     if (player.health > 100.0){
       player.health = 100.0
     }
-    player.backpack("bandage") -= 1
+    player.backpack("bandage") = player.backpack("bandage") - 1
   }
 
   def useFood(player: Player): Unit = {
@@ -25,7 +26,7 @@ class Player(var hunger:Double,
     if (player.hunger > 100){
       player.hunger = 100
     }
-    player.backpack("food") -= 1
+    player.backpack("food") = player.backpack("food") - 1
   }
 
   def checkDeath(player:Player): Unit = {

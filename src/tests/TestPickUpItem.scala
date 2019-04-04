@@ -32,12 +32,12 @@ class TestPickUpItem extends FunSuite {
     var p5:Player = new Player(100.0, "alive", 2, 372)
     var p6:Player = new Player(100.0, "alive", 352, 869)
 
-    p1.backpack = Map("bandage" -> 0, "food" -> 0, "ammo" -> 0)
-    p2.backpack = Map("bandage" -> 1, "food" -> 2, "ammo" -> 0)
-    p3.backpack = Map("bandage" -> 6, "food" -> 9, "ammo" -> 0)
-    p4.backpack = Map("bandage" -> 5, "food" -> 2, "ammo" -> 0)
-    p5.backpack = Map("bandage" -> 3, "food" -> 4, "ammo" -> 0)
-    p6.backpack = Map("bandage" -> 7, "food" -> 8, "ammo" -> 0)
+    p1.backpack = scala.collection.mutable.Map("bandage" -> 0, "food" -> 0, "ammo" -> 0)
+    p2.backpack = scala.collection.mutable.Map("bandage" -> 1, "food" -> 2, "ammo" -> 0)
+    p3.backpack = scala.collection.mutable.Map("bandage" -> 6, "food" -> 9, "ammo" -> 0)
+    p4.backpack = scala.collection.mutable.Map("bandage" -> 5, "food" -> 2, "ammo" -> 0)
+    p5.backpack = scala.collection.mutable.Map("bandage" -> 3, "food" -> 4, "ammo" -> 0)
+    p6.backpack = scala.collection.mutable.Map("bandage" -> 7, "food" -> 8, "ammo" -> 0)
 
     val i1:bandage = new bandage(100, 100)
     val i2:bandage = new bandage(234, 567)
