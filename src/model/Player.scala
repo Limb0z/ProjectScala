@@ -4,13 +4,13 @@ import model.playerstates.PlayerState
 import model.playerstates.groundstates.Walking
 import gameObjects._
 
-class Player(var backpack: Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "ammo" -> 0),
-             var hunger:Double,
+class Player(var hunger:Double,
              var condition:String,
              var locationX:Double,
              var locationY:Double)
   extends living(health = 100.0) {
 
+  var backpack:Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "ammo" -> 0)
 
   def useBandage(player: Player): Unit = {
     player.health += 10.0

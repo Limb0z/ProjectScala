@@ -25,12 +25,19 @@ class TestPickUpItem extends FunSuite {
   }
 
   test("pick up items and put it into backpack"){
-    var p1:Player = new Player(Map("bandage" -> 0, "food" -> 0), 100.0, "alive", 100, 100)
-    var p2:Player = new Player(Map("bandage" -> 1, "food" -> 2), 100.0, "alive", 14, 17)
-    var p3:Player = new Player(Map("bandage" -> 6, "food" -> 9), 100.0, "alive", 91, 3)
-    var p4:Player = new Player(Map("bandage" -> 5, "food" -> 2), 100.0, "alive", 34, 84)
-    var p5:Player = new Player(Map("bandage" -> 3, "food" -> 4), 100.0, "alive", 2, 372)
-    var p6:Player = new Player(Map("bandage" -> 7, "food" -> 8), 100.0, "alive", 352, 869)
+    var p1:Player = new Player(100.0, "alive", 100, 100)
+    var p2:Player = new Player(100.0, "alive", 14, 17)
+    var p3:Player = new Player(100.0, "alive", 91, 3)
+    var p4:Player = new Player(100.0, "alive", 34, 84)
+    var p5:Player = new Player(100.0, "alive", 2, 372)
+    var p6:Player = new Player(100.0, "alive", 352, 869)
+
+    p1.backpack = Map("bandage" -> 0, "food" -> 0, "ammo" -> 0)
+    p2.backpack = Map("bandage" -> 1, "food" -> 2, "ammo" -> 0)
+    p3.backpack = Map("bandage" -> 6, "food" -> 9, "ammo" -> 0)
+    p4.backpack = Map("bandage" -> 5, "food" -> 2, "ammo" -> 0)
+    p5.backpack = Map("bandage" -> 3, "food" -> 4, "ammo" -> 0)
+    p6.backpack = Map("bandage" -> 7, "food" -> 8, "ammo" -> 0)
 
     val i1:bandage = new bandage(100, 100)
     val i2:bandage = new bandage(234, 567)
@@ -59,6 +66,13 @@ class TestPickUpItem extends FunSuite {
     pickUpItem(p4, w4)
     pickUpItem(p5, w4)
     pickUpItem(p6, w3)
+
+    println(p1.backpack("bandage"))
+    println(p2.backpack("bandage"))
+    println(p3.backpack("bandage"))
+    println(p4.backpack("food"))
+    println(p5.backpack("food"))
+    println(p6.backpack("food"))
 
     assert(p1.backpack("bandage") == 1,true)
     assert(p2.backpack("bandage") == 1,true)
