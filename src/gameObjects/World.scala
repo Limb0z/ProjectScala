@@ -1,6 +1,7 @@
 package gameObjects
 
 import scala.collection.mutable.ListBuffer
+import model.Player
 
 class World {
 

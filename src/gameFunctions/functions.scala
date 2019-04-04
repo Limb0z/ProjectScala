@@ -1,6 +1,7 @@
 package gameFunctions
 
 import gameObjects._
+import model.Player
 
 object functions {
 
@@ -22,10 +23,10 @@ object functions {
   }
 
   //removes a player if their state is dead
-  def checkDeath(list:World): Unit = {
-    for (currentPlayer <- list.playerList){
-      if(currentPlayer.state == "dead"){
-        list.playerList -= currentPlayer
+  def checkDeath(world:World): Unit = {
+    for (currentPlayer <- world.playerList){
+      if(currentPlayer.state == false){
+        world.playerList -= currentPlayer
       }
     }
   }

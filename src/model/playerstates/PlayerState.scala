@@ -36,9 +36,7 @@ abstract class PlayerState(player: Player) {
 
   def downReleased(): Unit = {}
 
-  /*
   def isAlive: Boolean = {
     true
   }
-  */
 }

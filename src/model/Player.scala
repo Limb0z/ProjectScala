@@ -11,7 +11,6 @@ class Player(var backpack: Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "
   extends living(health = 100.0) {
 
 
-
   def useBandage(player: Player): Unit = {
     player.health += 10.0
     if (player.health > 100.0){
@@ -32,7 +31,6 @@ class Player(var backpack: Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "
     if (player.health <= 0 || player.hunger <= 0){
       player.health = 0
       player.hunger = 0
-      player.state = "dead"
     }
   }
 
@@ -81,6 +79,10 @@ class Player(var backpack: Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "
   def downReleased(): Unit = {
     this.downKeyHeld = false
     this.state.downReleased()
+  }
+
+  def isAlive: Boolean = {
+    this.state.isAlive
   }
 
   //WALKING
