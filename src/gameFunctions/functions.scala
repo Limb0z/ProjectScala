@@ -25,7 +25,6 @@ object functions {
     }
   }
 
-
   //removes a player if their state is dead
   def checkDeath(world:World): Unit = {
     for (currentPlayer <- world.playerList){
