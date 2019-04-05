@@ -2,6 +2,7 @@ package gameFunctions
 
 import gameObjects._
 import model.Player
+import tests.TestCheckDeath
 
 object functions {
 
@@ -24,7 +25,12 @@ object functions {
         }
       }
     }
-  }
+  }/*
+  def updateBullet(world:World): Unit = {
+    for (bullet <- world.bulletList) {
+
+    }
+  }*/
   def checkHitbox(player: Player, item: items): Boolean = {//15 pixel hitbox
     if (player.locationX < item.locationX + 125 && player.locationX + 125 > item.locationX && player.locationY < item.locationY + 125 && player.locationY + 125 > item.locationY) {
       true

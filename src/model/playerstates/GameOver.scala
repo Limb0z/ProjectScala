@@ -20,6 +20,10 @@ class GameOver(player: Player) extends PlayerState(player) {
 
   override def downReleased(): Unit = {}
 
+  override def walkLeft(): Unit = {}
+  override def walkRight(): Unit = {}
+  override def walkUp(): Unit = {}
+  override def walkDown(): Unit = {}
 
   override def isAlive: Boolean = {
     false

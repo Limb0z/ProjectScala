@@ -89,18 +89,92 @@ class Player(var hunger:Double,
 
   //WALKING
   def walkLeft(): Unit = {
-    this.locationX -= 5
+    this.locationX -= 7
   }
 
   def walkRight(): Unit = {
-    this.locationX += 5
+    this.locationX += 7
   }
 
   def walkUp(): Unit = {
-    this.locationY += 5
+    this.locationY += 7
   }
 
   def walkDown(): Unit = {
-    this.locationY -= 5
+    this.locationY -= 7
   }
+
+
+  def keepWalkLeft(): Unit = {
+    this.doWalkLeft = true
+    val t = new java.util.Timer()
+    val thissy = this
+    val task = new java.util.TimerTask {
+      def run() = {
+        if (thissy.doWalkLeft) {
+          walkLeft()
+        }
+        else {
+          this.cancel()
+        }
+      }
+    }
+    t.schedule(task, 0, 5)
+  }
+
+  def keepWalkRight(): Unit = {
+    this.doWalkRight = true
+    val t = new java.util.Timer()
+    val thissy = this
+    val task = new java.util.TimerTask {
+      def run() = {
+        if (thissy.doWalkRight) {
+          walkRight()
+        }
+        else {
+          this.cancel()
+        }
+      }
+    }
+    t.schedule(task, 0, 5)
+  }
+
+  def keepWalkUp(): Unit = {
+    this.doWalkUp = true
+    val t = new java.util.Timer()
+    val thissy = this
+    val task = new java.util.TimerTask {
+      def run() = {
+        if (thissy.doWalkUp) {
+          walkUp()
+        }
+        else {
+          this.cancel()
+        }
+      }
+    }
+    t.schedule(task, 0, 5)
+  }
+
+  def keepWalkDown(): Unit = {
+    this.doWalkDown = true
+    val t = new java.util.Timer()
+    val thissy = this
+    val task = new java.util.TimerTask {
+      def run() = {
+        if (thissy.doWalkDown) {
+          walkDown()
+        }
+        else {
+          this.cancel()
+        }
+      }
+    }
+    t.schedule(task, 0, 5)
+  }
+
+  var doWalkLeft : Boolean = false
+  var doWalkRight : Boolean = false
+  var doWalkUp : Boolean = false
+  var doWalkDown : Boolean = false
 }

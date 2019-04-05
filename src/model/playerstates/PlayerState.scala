@@ -36,6 +36,11 @@ abstract class PlayerState(player: Player) {
 
   def downReleased(): Unit = {}
 
+  def walkLeft(): Unit = {}
+  def walkRight(): Unit = {}
+  def walkUp(): Unit = {}
+  def walkDown(): Unit = {}
+
   def isAlive: Boolean = {
     true
   }

@@ -7,4 +7,5 @@ class World {
 
   var playerList:ListBuffer[Player] = ListBuffer()
   var itemList:ListBuffer[items] = ListBuffer()
+  var bulletList: ListBuffer[bullet] = ListBuffer()
 }
