@@ -89,18 +89,18 @@ class Player(var hunger:Double,
 
   //WALKING
   def walkLeft(): Unit = {
-    this.locationX -= 1
+    this.locationX -= 5
   }
 
   def walkRight(): Unit = {
-    this.locationX += 1
+    this.locationX += 5
   }
 
   def walkUp(): Unit = {
-    this.locationY += 1
+    this.locationY += 5
   }
 
   def walkDown(): Unit = {
-    this.locationY -= 1
+    this.locationY -= 5
   }
 }
