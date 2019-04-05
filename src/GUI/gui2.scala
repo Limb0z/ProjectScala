@@ -40,7 +40,7 @@ object gui2 extends JFXApp{
     width = 1280
   }
   //this player will be set by a json string on game boot
-  val player: Player = new Player(scala.collection.mutable.Map("bandage" -> 0, "food" -> 0), 100.0,"alive",0,100)
+  val player: Player = new Player(100.0,"alive",0,100)
 
   var gameCanvas:Canvas = new Canvas(){
     layoutY=0
