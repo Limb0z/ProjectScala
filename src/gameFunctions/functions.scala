@@ -32,7 +32,7 @@ object functions {
     }
   }*/
   def checkHitbox(player: Player, item: items): Boolean = {//15 pixel hitbox
-    if (player.locationX < item.locationX + 125 && player.locationX + 125 > item.locationX && player.locationY < item.locationY + 125 && player.locationY + 125 > item.locationY) {
+    if (player.locationX < item.locationX + 100 && player.locationX + 100 > item.locationX && player.locationY < item.locationY + 100 && player.locationY + 100 > item.locationY) {
       true
     }
     else {
