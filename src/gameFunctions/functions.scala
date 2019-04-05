@@ -11,16 +11,20 @@ object functions {
       if (player.locationX == currentItem.locationX && player.locationY == currentItem.locationY){
         if (currentItem.isInstanceOf[bandage]){
           player.backpack("bandage") += 1
+          world.itemList -= currentItem
         }
         if (currentItem.isInstanceOf[food]){
           player.backpack("food") += 1
+          world.itemList -= currentItem
         }
         if (currentItem.isInstanceOf[ammo]){
           player.backpack("ammo") += 1
+          world.itemList -= currentItem
         }
       }
     }
   }
+
 
   //removes a player if their state is dead
   def checkDeath(world:World): Unit = {
