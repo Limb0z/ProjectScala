@@ -1,7 +1,5 @@
 package GUI
 
-
-import GUI.gui.{keyPressed, player}
 import javafx.scene.input.{KeyCode, KeyEvent, MouseEvent}
 import model.Player
 import scalafx.animation.AnimationTimer
