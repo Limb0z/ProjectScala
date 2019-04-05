@@ -1,7 +1,5 @@
 package GUI
 
-
-//import GUI.gui.{keyPressed, player}
 import gameObjects._
 import javafx.scene.input.{KeyCode, KeyEvent, MouseEvent}
 import model.Player
@@ -24,16 +22,15 @@ object gui2 extends JFXApp{
   }
   MainScene.addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))
 
-  //W and S inverted controls
   def keyPressed(keyCode: KeyCode): Unit = {
     keyCode.getName match {
-      case "W" => player.walkDown()
-      case "A" => player.walkLeft()
       case "S" => player.walkUp()
+      case "A" => player.walkLeft()
+      case "W" => player.walkDown()
       case "D" => player.walkRight()
-      case "Up" => player.walkDown()
-      case "Left" => player.walkLeft()
       case "Down" => player.walkUp()
+      case "Left" => player.walkLeft()
+      case "Up" => player.walkDown()
       case "Right" => player.walkRight()
       case _ => println(keyCode.getName + " pressed with no action")
     }
