@@ -1,6 +1,6 @@
 package tests
 
-import gameFunctions._
+import model.Game
 import gameObjects._
 import org.scalatest.FunSuite
 import scala.collection.mutable.ListBuffer

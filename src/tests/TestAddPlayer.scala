@@ -1,7 +1,7 @@
 package tests
 
 import org.scalatest.FunSuite
-import gameFunctions.functions
+import model.Game
 import gameObjects._
 import model.Player
 

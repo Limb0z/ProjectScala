@@ -13,7 +13,7 @@ import scalafx.scene.image.Image
 import scalafx.scene.layout.Pane
 import scalafx.scene.paint.Color.Green
 import scala.collection.mutable.ListBuffer
-import gameFunctions.functions
+import model.Game
 
 object gui2 extends JFXApp{
   var MainScene: Scene = new Scene {
