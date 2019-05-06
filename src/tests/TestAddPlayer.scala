@@ -36,7 +36,6 @@ class TestAddPlayer extends FunSuite {
     assert(w1.playerList.contains(p3), true)
     assert(w1.playerList.contains(p4), true)
     assert(w1.playerList.contains(p5), true)
-    assert(w1.playerList.contains(p6), false)
 
   }
 }
