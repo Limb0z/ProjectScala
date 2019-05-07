@@ -5,7 +5,60 @@ import gameObjects._
 class Game {
 
   val world = new World
-  val
+
+  var players: Map[String,Player] = Map()
+  var itemList: List[items] = List()
+  var bulletList: List[bullet] = List()
+
+  var playerSize:Double = 0.5
+
+
+  //removes a player if their state is dead
+  def checkDeath(world:World): Unit = {
+    for (currentPlayer <- world.playerList){
+      if(currentPlayer.condition == "dead"){
+        world.playerList -= currentPlayer
+      }
+    }
+  }
+
+  //add new player to current list of all players
+  def addPlayers(player:Player, world:World):Unit = {
+    world.playerList = world.playerList :+ player
+  }
+
+  //TRYING DIFFERENT WAY OF ADDING AND REMOVING PLAYERS
+  def addPlayers2(name:String): Unit = {
+    val player = new Player(100, "alive", 1,1)
+    players += (name -> player)
+    world.playerList2 = player :: world.playerList2
+  }
+
+  def removePlayer2(name:String): Unit = {
+    players(name).remove()
+    players -= name
+  }
+
+  def checkDeath2(world:World):Unit ={
+
+  }
+
+  def distance(player: Player, bullet:bullet): Double = {
+    Math.sqrt(Math.pow(player.locationX - bullet.locationX, 2.0) + Math.pow(player.locationY - bullet.locationY, 2.0))
+  }
+
+  //HIT DETECTION
+  def hitDetection():Unit = {
+    for(player <- players){
+      for(bullet<- bulletList){
+        if(distance(player._2, bullet) <= playerSize){
+          bullet.destroy1
+          player._2.health -= 25.0
+
+        }
+      }
+    }
+  }
 
   //adds an item into a players backpack
   def pickUpItem(player:Player, world:World): Unit = {
@@ -41,19 +94,5 @@ class Game {
     }
   }
 
-  //removes a player if their state is dead
-  def checkDeath(world:World): Unit = {
-    for (currentPlayer <- world.playerList){
-      if(currentPlayer.condition == "dead"){
-        world.playerList -= currentPlayer
-      }
-    }
-  }
-
-  //add new player to current list of all players
-  def addPlayers(player:Player, world:World):Unit = {
-    world.playerList = world.playerList :+ player
-  }
-}
-
+  def update: Unit = {}
 }

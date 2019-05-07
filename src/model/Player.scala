@@ -36,8 +36,12 @@ class Player(var hunger:Double,
     }
   }
 
-  var state:PlayerState = new Walking(this)
+  var remove:Boolean = false
+  def removePlayer():Unit = {
+    remove = true
+  }
 
+  var state:PlayerState = new Walking(this)
   var leftKeyHeld = false
   var rightKeyHeld = false
   var upKeyHeld = false
