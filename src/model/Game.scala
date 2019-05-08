@@ -39,8 +39,12 @@ class Game {
     players -= name
   }
 
-  def checkDeath2(world:World):Unit ={
-
+  def checkDeath2():Unit ={
+    for(player <- players){
+      if(player._2.health == 0){
+        removePlayer2(player._1)
+      }
+    }
   }
 
   def distance(player: Player, bullet:bullet): Double = {
@@ -54,7 +58,7 @@ class Game {
         if(distance(player._2, bullet) <= playerSize){
           bullet.destroy1
           player._2.health -= 25.0
-
+          checkDeath2()
         }
       }
     }
@@ -94,5 +98,12 @@ class Game {
     }
   }
 
-  def update: Unit = {}
+  def update: Unit = {
+    hitDetection()
+
+  }
+
+  def gameState(): String = {
+
+  }
 }
