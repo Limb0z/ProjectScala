@@ -73,7 +73,7 @@ class Game {
 
   def shootBullet(player: Player, xcoord:Double,ycoord:Double): Unit = {
     if (player.backpack("ammo") > 0) {
-      val bullet = new bullet(16, player.locationX + 50, player.locationY + 50, xcoord - 50, ycoord - 50, player.name)
+      val bullet = new bullet(16, player.locationX + 50, player.locationY + 50, xcoord - 50, ycoord - 50, 1, player.name)
       addBullet(bullet)
       player.backpack("ammo") -= 1
       player.bulletsShot += 1
