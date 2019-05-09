@@ -12,8 +12,12 @@ import scalafx.scene.canvas.{Canvas, GraphicsContext}
 import scalafx.scene.image.Image
 import scalafx.scene.layout.Pane
 import scalafx.scene.paint.Color.Green
+import scalafx.scene.paint.Color.Black
+import scalafx.scene.paint.Color.Red
+
 import scala.collection.mutable.ListBuffer
 import model.Game
+import scalafx.scene.paint.Color
 
 object gui2 extends JFXApp{
   var MainScene: Scene = new Scene {
@@ -23,7 +27,20 @@ object gui2 extends JFXApp{
   }
   MainScene.addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))
   MainScene.addEventHandler(KeyEvent.KEY_RELEASED, (event: KeyEvent) => keyReleased(event.getCode))
+  MainScene.addEventHandler(MouseEvent.MOUSE_CLICKED, (event: MouseEvent) => mouseClicked(event.getSceneX,event.getSceneY))
+  def mouseClicked(xpos: Double, ypos: Double): Unit = {
+    game.shootBullet(player,xpos,ypos)
+    if (ypos > 660) {
+      if (xpos < 125) {
+        player.useBandage(player)
+      }
+      else if (xpos < 275) {
+        player.useFood(player)
+      }
+    }
 
+
+  }
   def keyPressed(keyCode: KeyCode): Unit = {
     keyCode.getName match {
       /*case "S" => player.keepWalkUp()
@@ -62,16 +79,16 @@ object gui2 extends JFXApp{
   }
   var MainStage: JFXApp.PrimaryStage = new JFXApp.PrimaryStage {
     scene = MainScene
-    height = 720
+    height = 840
     width = 1280
   }
   //this player will be set by a json string on game boot
-  val player: Player = new Player( 100.0,"alive",120,450)
-
+  val player: Player = new Player( 100.0,"alive",120,450, "test")
+  player.health = 1
   var gameCanvas:Canvas = new Canvas() {
     layoutY = 0
     layoutX = 0
-    height = 720
+    height = 840
     width = 1280
   }
   //var backgroundImage:Image = new Image("https://image.freepik.com/free-photo/artificial-grass-field-top-view-texture_3248-2762.jpg")
@@ -88,8 +105,10 @@ object gui2 extends JFXApp{
   }
 
   //var a:Long = 0
-  val world: World = new World
-  world.itemList = ListBuffer(
+  //val world: World = new World
+  val game: Game = new Game
+  game.world.playerList += player
+  game.world.itemList = ListBuffer(
     new ammo(400,50),
     new ammo(1100,150),
     new ammo(1100,300),
@@ -99,33 +118,45 @@ object gui2 extends JFXApp{
     new bandage(800,450))
 
   val animateTimer = AnimationTimer(t => {
-    gc.clearRect(0,0,1280,720)
-    gc.drawImage(backgroundImage,0,0,1280,720)
-    gc.drawImage(gameImage,player.locationX,player.locationY,125,125)
-    for (y <- world.itemList) {
+    gc.clearRect(0,0,1280,840)
+    gc.drawImage(backgroundImage,0,0,1280,840)
+    gc.drawImage(gameImage,player.locationX,player.locationY,62,62)
+    for (y <- game.world.itemList) {
       if (y.isInstanceOf[ammo]) {
-        gc.drawImage(ammoImage,y.locationX,y.locationY,125,125)
+        gc.drawImage(ammoImage,y.locationX,y.locationY,62,62)
       }
       if (y.isInstanceOf[bandage]) {
-        gc.drawImage(bandageImage,y.locationX,y.locationY,125,125)
+        gc.drawImage(bandageImage,y.locationX,y.locationY,62,62)
       }
       if (y.isInstanceOf[food]) {
-        gc.drawImage(foodImage,y.locationX,y.locationY,125,125)
+        gc.drawImage(foodImage,y.locationX,y.locationY,62,62)
       }
     }
-    gc.drawImage(enemy,900,350,125,150)
-    gc.drawImage(enemy,960,400,125,150)
-    gc.drawImage(enemy,1020,450,125,150)
-    gc.drawImage(enemy,960,450,125,150)
-    gc.drawImage(gameImage,1100,50,125,125)
+    for (y <- game.bulletList) {
+      if (y.isInstanceOf[bullet]) {
+        game.updateBullet(y,y.whoShot)
+        gc.drawImage(ammoImage,y.locationX,y.locationY,15,15)
+      }
+    }
+    gc.drawImage(enemy,900,350,62,75)
+    gc.drawImage(enemy,960,400,62,75)
+    gc.drawImage(enemy,1020,450,62,75)
+    gc.drawImage(enemy,960,450,62,75)
+    gc.drawImage(gameImage,1100,50,62,62)
     gc.fillText("Ammo: " + player.backpack("ammo").toString, player.locationX,player.locationY+0)
     gc.fillText("Bandages: " + player.backpack("bandage").toString, player.locationX,player.locationY+10)
     gc.fillText("Food: " + player.backpack("food").toString, player.locationX,player.locationY+20)
-    gc.fillText("Health: 100", player.locationX,player.locationY-20)
+    gc.fillText("Health: " + player.health.toString, player.locationX,player.locationY-20)
     gc.fillText("Score: 10000", 50,600)
     gc.fillText("Zombies Killed: 100", 50,615)
     gc.fillText("Players Killed: 0", 50,630)
-    //gameFunctions.functions.pickUpItem(player, world)
+    gc.fillText("Bullets Shot: "+ player.bulletsShot.toString, 50,645)
+    game.pickUpItem(player, game.world)
+    //gc.fill = Black
+    gc.fillRect(0,660,1280,840)
+    gc.drawImage(bandageImage,0,660,125,125)
+    gc.drawImage(foodImage,150,660,125,125)
+    //gc.fill = Red
    // if (player.locationX > 1000) {
    //   model.playerstates.GameOver.gameOver(player)
   //  }

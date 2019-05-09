@@ -31,7 +31,7 @@ class Game {
 
   //TRYING DIFFERENT WAY OF ADDING AND REMOVING PLAYERS
   def addPlayers2(name:String): Unit = {
-    val player = new Player(100, "alive", 1,1)
+    val player = new Player(100, "alive", 1,1, "oof")
     players += (name -> player)
     world.playerList2 = player :: world.playerList2
   }
@@ -53,8 +53,31 @@ class Game {
     Math.sqrt(Math.pow(player.locationX - bullet.locationX, 2.0) + Math.pow(player.locationY - bullet.locationY, 2.0))
   }
 
-  def addBullet(bullet:bullet) = {
+  def addBullet(bullet : bullet) : Unit = {
     bulletList = bullet :: bulletList
+  }
+
+  def updateBullet(bullet:bullet,player:String):Unit = {
+    var whoDid = new Player(100, "alive", 0,0,"oof3")
+    for (zz <- world.playerList) {
+      if (zz.name == player) {
+        whoDid = zz
+      }
+    }
+    var dx = bullet.eX-whoDid.locationX
+    var dy = bullet.eY-whoDid.locationY
+    var mag = Math.sqrt(dx*dx+dy*dy)
+    bullet.locationX = bullet.locationX + (dx/mag)*bullet.speed
+    bullet.locationY = bullet.locationY + (dy/mag)*bullet.speed
+  }
+
+  def shootBullet(player: Player, xcoord:Double,ycoord:Double): Unit = {
+    if (player.backpack("ammo") > 0) {
+      val bullet = new bullet(16, player.locationX + 50, player.locationY + 50, xcoord - 50, ycoord - 50, player.name)
+      addBullet(bullet)
+      player.backpack("ammo") -= 1
+      player.bulletsShot += 1
+    }
   }
 
   //HIT DETECTION
@@ -76,7 +99,7 @@ class Game {
       if (checkHitbox(player,currentItem)){ //Added some hitboxes so that a player doesnt have to be centered above an item to pick it up.
         currentItem match {
           case _ : ammo =>
-            player.backpack("ammo") += 1
+            player.backpack("ammo") += 30
             world.itemList -= currentItem
           case _ : bandage =>
             player.backpack("bandage") += 1
@@ -96,7 +119,7 @@ class Game {
     }
   }*/
   def checkHitbox(player: Player, item: items): Boolean = {//15 pixel hitbox
-    if (player.locationX < item.locationX + 100 && player.locationX + 100 > item.locationX && player.locationY < item.locationY + 100 && player.locationY + 100 > item.locationY) {
+    if (player.locationX < item.locationX + 50 && player.locationX + 50 > item.locationX && player.locationY < item.locationY + 50 && player.locationY + 50 > item.locationY) {
       true
     }
     else {

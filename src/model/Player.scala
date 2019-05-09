@@ -7,26 +7,32 @@ import gameObjects._
 class Player(var hunger:Double,
              var condition:String,
              var locationX:Double,
-             var locationY:Double)
+             var locationY:Double,
+            var name:String)
   extends living(health = 100.0) {
 
   //var backpack:Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "ammo" -> 0)
   var backpack = scala.collection.mutable.Map("bandage" -> 0, "food" -> 0 ,"ammo" -> 0)
+  var bulletsShot : Int = 0
 
   def useBandage(player: Player): Unit = {
-    player.health += 10.0
-    if (player.health > 100.0){
-      player.health = 100.0
+    if (player.health < 100 && player.backpack("bandage") > 0) {
+      player.health += 25.0
+      if (player.health > 100.0) {
+        player.health = 100.0
+      }
+      player.backpack("bandage") = player.backpack("bandage") - 1
     }
-    player.backpack("bandage") = player.backpack("bandage") - 1
   }
 
   def useFood(player: Player): Unit = {
-    player.health += 10
-    if (player.hunger > 100){
-      player.hunger = 100
+    if (player.health < 100 && player.backpack("food") > 0) {
+      player.health += 10.0
+      if (player.health > 100) {
+        player.health = 100
+      }
+      player.backpack("food") = player.backpack("food") - 1
     }
-    player.backpack("food") = player.backpack("food") - 1
   }
 
   def checkDeath(player:Player): Unit = {
@@ -40,8 +46,6 @@ class Player(var hunger:Double,
   def removePlayer():Unit = {
     remove = true
   }
-
-  def fire(jsonGameState:String): Unit = {}
 
   var state:PlayerState = new Walking(this)
   var leftKeyHeld = false

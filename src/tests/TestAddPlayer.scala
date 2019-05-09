@@ -14,12 +14,12 @@ class TestAddPlayer extends FunSuite {
   }
 
   test("add player") {
-    var p1:Player = new Player(100.0, "alive", 100, 100)
-    var p2:Player = new Player(100.0, "alive", 14, 17)
-    var p3:Player = new Player(100.0, "alive", 91, 3)
-    var p4:Player = new Player(100.0, "alive", 34, 84)
-    var p5:Player = new Player(100.0, "alive", 2, 372)
-    var p6:Player = new Player(100.0, "alive", 352, 869)
+    var p1:Player = new Player(100.0, "alive", 100, 100, "oof3")
+    var p2:Player = new Player(100.0, "alive", 14, 17, "oof3")
+    var p3:Player = new Player(100.0, "alive", 91, 3, "oof3")
+    var p4:Player = new Player(100.0, "alive", 34, 84, "oof3")
+    var p5:Player = new Player(100.0, "alive", 2, 372, "oof3")
+    var p6:Player = new Player(100.0, "alive", 352, 869, "oof3")
 
     val l1:ListBuffer[Player] = new ListBuffer[Player]
     val w1:World = new World

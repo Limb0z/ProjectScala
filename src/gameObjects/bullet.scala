@@ -5,8 +5,6 @@ class bullet(var speed: Double,
              var locY: Double,
              var eX: Double,
              var eY: Double,
-             var velocityX: Double,
-             var velocityY: Double,
              var whoShot: String) extends items(locX, locY){
 
 }
