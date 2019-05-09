@@ -1,6 +1,7 @@
 package model
 
 import gameObjects._
+import play.api.libs.json.{JsValue, Json}
 
 class Game {
 
@@ -12,6 +13,7 @@ class Game {
 
   var playerSize:Double = 0.5
 
+  var lastUpdateTime: Long = System.nanoTime()
 
   //removes a player if their state is dead
   def checkDeath(world:World): Unit = {
@@ -49,6 +51,10 @@ class Game {
 
   def distance(player: Player, bullet:bullet): Double = {
     Math.sqrt(Math.pow(player.locationX - bullet.locationX, 2.0) + Math.pow(player.locationY - bullet.locationY, 2.0))
+  }
+
+  def addBullet(bullet:bullet) = {
+    bulletList = bullet :: bulletList
   }
 
   //HIT DETECTION
@@ -98,12 +104,26 @@ class Game {
     }
   }
 
-  def update: Unit = {
-    hitDetection()
+  def shoot(): Unit = {
 
   }
 
-  def gameState(): String = {
+  def update: Unit = {
+    val time: Long = System.nanoTime()
+    val changeInTime = (time - this.lastUpdateTime) / 99999999999.0
+    hitDetection()
+    checkDeath2()
+    this.lastUpdateTime = time
+  }
 
+  def gameState(): String = {
+    val gameState:Map[String, JsValue] = Map(
+      "walls" -> Json.toJson(),
+      "players" -> Json.toJson(this.players.map({ case (a, b) => Json.toJson(Map(
+      "x" -> Json.toJson(b.locationX),
+      "y" -> Json.toJson(b.locationY),
+      "id" -> Json.toJson(a))) })),
+
+    )
   }
 }

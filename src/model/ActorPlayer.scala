@@ -3,12 +3,13 @@ package model
 import gameObjects._
 import akka.actor._
 
+/*
 //Recieved By Player Actor
 case class Move()
 case class Shoot()
 case class Kill()
 case class AddPlayer(name:String)
-case class RemovePlayer(name:String)
+case class RemovePlayer(name:String)*/
 
 class ActorPlayer(var name:String, var posX:Double, var posY:Double) extends Actor {
 
@@ -17,8 +18,14 @@ class ActorPlayer(var name:String, var posX:Double, var posY:Double) extends Act
   var game = new Game()
 
   override def receive: Receive = {
-    case message:AddPlayer => game.addPlayers2(name)
-    case message: RemovePlayer => game.removePlayer2(name)
+    case Shoot => {
+      val bullet = new bullet()
+    }
+
+    case Kill =>{
+      alive = false
+    }
   }
+
 
 }
