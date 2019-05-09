@@ -89,7 +89,14 @@ object gui2 extends JFXApp{
 
   //var a:Long = 0
   val world: World = new World
-  world.itemList = ListBuffer(new ammo(400,50),new ammo(1100,150),new ammo(1100,300),new food(400,300),new food(200,300),new bandage(500,450),new bandage(800,450))
+  world.itemList = ListBuffer(
+    new ammo(400,50),
+    new ammo(1100,150),
+    new ammo(1100,300),
+    new food(400,300),
+    new food(200,300),
+    new bandage(500,450),
+    new bandage(800,450))
 
   val animateTimer = AnimationTimer(t => {
     gc.clearRect(0,0,1280,720)

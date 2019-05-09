@@ -3,7 +3,7 @@ package model
 //Player Actor
 case class Move()
 case class Shoot()
-case class Kill()
+case class Kill(name:String)
 
 //Game Actor
 case class AddPlayer(name:String)

@@ -104,9 +104,6 @@ class Game {
     }
   }
 
-  def shoot(): Unit = {
-
-  }
 
   def update: Unit = {
     val time: Long = System.nanoTime()

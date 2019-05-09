@@ -41,6 +41,10 @@ class Player(var hunger:Double,
     remove = true
   }
 
+  def fire(): Unit = {
+
+  }
+
   var state:PlayerState = new Walking(this)
   var leftKeyHeld = false
   var rightKeyHeld = false
