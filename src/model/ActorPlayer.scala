@@ -28,7 +28,7 @@ class ActorPlayer(gameActor: ActorRef, var name:String, var posX:Double, var pos
         val projectiles = player.fire(gameState)
         //        val projectiles = tower.aimFire(gameState)
 
-        projectiles.foreach(proj => gameActor ! AddProjectile(proj.location.x, proj.location.y, proj.location.z, proj.velocity.x, proj.velocity.y, proj.velocity.z))
+        //projectiles.foreach(proj => gameActor ! AddProjectile(proj.location.x, proj.location.y, proj.location.z, proj.velocity.x, proj.velocity.y, proj.velocity.z))
       }
     }
 

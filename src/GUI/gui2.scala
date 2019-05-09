@@ -125,7 +125,7 @@ object gui2 extends JFXApp{
     gc.fillText("Score: 10000", 50,600)
     gc.fillText("Zombies Killed: 100", 50,615)
     gc.fillText("Players Killed: 0", 50,630)
-    gameFunctions.functions.pickUpItem(player, world)
+    //gameFunctions.functions.pickUpItem(player, world)
    // if (player.locationX > 1000) {
    //   model.playerstates.GameOver.gameOver(player)
   //  }

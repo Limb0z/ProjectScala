@@ -41,9 +41,7 @@ class Player(var hunger:Double,
     remove = true
   }
 
-  def fire(): Unit = {
-
-  }
+  def fire(jsonGameState:String): Unit = {}
 
   var state:PlayerState = new Walking(this)
   var leftKeyHeld = false
