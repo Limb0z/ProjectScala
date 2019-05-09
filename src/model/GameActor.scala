@@ -17,7 +17,7 @@ class GameActor extends Actor{
     case sendGameState => sender() ! GameState(game.gameState())
 
     case bullets: addBullet =>
-      val speed:Double = 0
+      val speed:Double = 10
       val locX:Double = 0
       val locY: Double = 0
       val eX: Double = 0
