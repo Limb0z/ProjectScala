@@ -42,11 +42,12 @@ class SocketServer (gameActor: ActorRef) extends Actor {
     messageType match {
       case "connected" => gameActor ! AddPlayer(username)
       case "disconnected" => gameActor ! RemovePlayer(username)
+      /*
       case "move" =>
         val x = (message \ "x").as[Double]
         val y = (message \ "y").as[Double]
         gameActor ! MovePlayer(username, x, y)
-      case "stop" => gameActor ! StopPlayer(username)
+      case "stop" => gameActor ! StopPlayer(username)*/
     }
   }
 }
