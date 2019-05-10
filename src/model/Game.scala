@@ -139,10 +139,12 @@ class Game {
   def gameState(): String = {
     val gameState:Map[String, JsValue] = Map(
       //"walls" -> Json.toJson(),
-      "players" -> Json.toJson(this.players.map({ case (a, b) => Json.toJson(Map(
-      "x" -> Json.toJson(b.locationX),
-      "y" -> Json.toJson(b.locationY),
-      "id" -> Json.toJson(a))) })),
+      "players" -> Json.toJson(this.players.map(
+        { case (a, b) => Json.toJson(Map(
+          "x" -> Json.toJson(b.locationX),
+          "y" -> Json.toJson(b.locationY),
+          "id" -> Json.toJson(a)))
+        })),
     )
     Json.stringify(Json.toJson(gameState))
   }
