@@ -31,7 +31,7 @@ class Game {
 
   //TRYING DIFFERENT WAY OF ADDING AND REMOVING PLAYERS
   def addPlayers2(name:String): Unit = {
-    val player = new Player(100, "alive", 1,1,"up", "oof")
+    val player = new Player(100, "alive", 1,1,"oof")
     players += (name -> player)
     world.playerList2 = player :: world.playerList2
   }
@@ -73,17 +73,10 @@ class Game {
 
   def shootBullet(player: Player, xcoord:Double,ycoord:Double): Unit = {
     if (player.backpack("ammo") > 0) {
-      val bullet = new bullet(16, player.locationX + 50, player.locationY + 50, xcoord - 50, ycoord - 50, 1, player.name)
+      val bullet = new bullet(16, player.locationX + 50, player.locationY + 50, xcoord - 50, ycoord - 50, player.name)
       addBullet(bullet)
       player.backpack("ammo") -= 1
       player.bulletsShot += 1
-    }
-  }
-
-  def fire(): Unit ={
-    for(player <- players){
-      val bullet = new bullet(10, player._2.locationX, player._2.locationY, 0, 0, 0, player._1)
-      bullet.sendBullet()
     }
   }
 

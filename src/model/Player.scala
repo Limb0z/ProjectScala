@@ -8,13 +8,13 @@ class Player(var hunger:Double,
              var condition:String,
              var locationX:Double,
              var locationY:Double,
-             var direction:String,
             var name:String)
   extends living(health = 100.0) {
 
   //var backpack:Map[String, Int] = Map("bandage" -> 0, "food" -> 0, "ammo" -> 0)
   var backpack = scala.collection.mutable.Map("bandage" -> 0, "food" -> 0 ,"ammo" -> 0)
   var bulletsShot : Int = 0
+  var direction:String = "up"
 
   def useBandage(player: Player): Unit = {
     if (player.health < 100 && player.backpack("bandage") > 0) {
