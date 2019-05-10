@@ -15,7 +15,7 @@ case class RemovePlayer(name:String)*/
 class ActorPlayer(gameActor: ActorRef, var name:String, var posX:Double, var posY:Double) extends Actor {
 
   val max = 1000
-  val player = new Player(100, "alive", Math.random() * max, Math.random() * max,"up","oof2")
+  val player = new Player(100, "alive", Math.random() * max, Math.random() * max,"oof2")
   var backpack = scala.collection.mutable.Map("bandage" -> 0, "food" -> 0 ,"ammo" -> 0)
   var alive = true
 

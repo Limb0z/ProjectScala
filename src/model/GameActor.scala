@@ -24,6 +24,6 @@ class GameActor extends Actor{
       val eY:Double = 0
       val direction:Double = 0
       val whoShot:String = ""
-      game.addBullet(new bullet(speed, locX, locY, eX, eY, direction, whoShot))
+      game.addBullet(new bullet(speed, locX, locY, eX, eY, whoShot))
   }
 }
