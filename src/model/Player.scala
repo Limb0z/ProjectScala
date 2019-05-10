@@ -8,6 +8,7 @@ class Player(var hunger:Double,
              var condition:String,
              var locationX:Double,
              var locationY:Double,
+             var direction:String,
             var name:String)
   extends living(health = 100.0) {
 

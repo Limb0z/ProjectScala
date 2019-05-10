@@ -8,4 +8,7 @@ class bullet(var speed: Double,
              var direction: Double,
              var whoShot: String) extends items(locX, locY){
 
+  def sendBullet(): Unit = {
+    this.direction = direction
+  }
 }
